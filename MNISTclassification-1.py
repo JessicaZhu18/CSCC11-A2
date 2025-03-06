@@ -49,7 +49,7 @@ R_train_KNN = []
 R_test_KNN = []
 Neighbours = np.arange(1,100,5)
 for k in Neighbours:
-  model = KNeighborsClassifier(k, weights='uniform')  # TODO define KNN model
+  model = KNeighborsClassifier(k)  # TODO define KNN model
   model.fit(X_train, y_train)                     # TODO fit the data
   y_res_train = model.predict(X_train)   # TODO Output for training set
   y_res_test = model.predict(X_test)    # TODO Output for test set
@@ -82,15 +82,13 @@ for s in Min_sample:
 
 # Plotting KNN
 plt.figure(figsize=(10, 6))
-plt.plot(Neighbours, R_train_KNN, label="Training Accuracy", marker='o', linestyle='-')
-plt.plot(Neighbours, R_test_KNN, label="Testing Accuracy", marker='o', linestyle='-')
+plt.plot(Neighbours, R_train_KNN, label="Training Accuracy")
+plt.plot(Neighbours, R_test_KNN, label="Testing Accuracy")
 
 # Adding labels and title
 plt.xlabel("k (Number of Neighbors)")
 plt.ylabel("Accuracy Score")
 plt.title("Training and Testing Accuracy for Different k values in KNN")
-plt.legend()
-plt.grid(True)
 plt.show()
 
 
